@@ -43,13 +43,13 @@ const MongoObject = {
       });
     },
 
-    addUser : async function(data, callback){
+    addUser : function(data, callback){
         MongoClient.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true}, (err, db) => {
             if (err) throw err;
-            var dbo = db.db("minesweeperdata");
-            var myobj = data;
-            var user = this.findByUsername(data.username);
-            console.log(user);
+            // var dbo = db.db("minesweeperdata");
+            // var myobj = data;
+            // var user = this.findByUsername(data.username);
+            // console.log(user);
             dbo.collection("users").insertOne(myobj, (err, res) => {
               if (err) throw err;
               console.log("1 document inserted");
@@ -83,6 +83,10 @@ const MongoObject = {
     deleteUser : function(data){
 
     },
+
+    // checkUsername : new Promise(){
+
+    // },
 }
 
 module.exports = MongoObject;
